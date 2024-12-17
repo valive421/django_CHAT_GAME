@@ -163,7 +163,14 @@ function createAnswer(offer, peerName, receiverChannelName) {
 
     setupPeerEvents(peer, peerName);
 
-    addLocalTracks(peer); // Add this line before generating the answer
+    // Listen for incoming data channels
+    peer.ondatachannel = (event) => {
+        const dataChannel = event.channel; // Access the incoming data channel
+        setupDataChannel(dataChannel); // Set up event handlers for the data channel
+        mapPeers[peerName] = [peer, dataChannel]; // Store the peer and channel
+    };
+
+    addLocalTracks(peer); // Add local media tracks
 
     peer.setRemoteDescription(new RTCSessionDescription(offer))
         .then(() => peer.createAnswer())
@@ -178,6 +185,7 @@ function createAnswer(offer, peerName, receiverChannelName) {
         }
     });
 }
+
 
 function setupPeerEvents(peer, peerName) {
     peer.addEventListener("connectionstatechange", () => {
