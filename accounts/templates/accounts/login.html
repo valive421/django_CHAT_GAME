@@ -1,18 +1,20 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
-
     <title>Login</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/style1.css' %}">
 </head>
 <body>
-    <h1>Login</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Log In</button>
-    </form>
-    <a href="{% url 'signup' %}">Don't have an account? Sign Up</a>
+    <div class="container">
+        <h1>Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Log In</button>
+        </form>
+        <a href="{% url 'signup' %}">Don't have an account? Sign Up</a>
+    </div>
+    <script src="{% static 'accounts/js/script.js' %}"></script>
 </body>
 </html>

@@ -1,14 +1,29 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
-
     <title>Home</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/style1.css' %}">
 </head>
 <body>
-    <h1>Welcome to the Authentication App</h1>
-    <a href="{% url 'signup' %}">Sign Up</a> |
-    <a href="{% url 'login' %}">Log In</a>
+    <!-- Navigation -->
+    <div class="navbar">
+        <a href="{% url 'signup' %}">Sign Up</a>
+        <a href="{% url 'login' %}">Log In</a>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+        <h1>Welcome to the Authentication </h1>
+        <p>This page helps you log in, create an account, and explore features.</p>
+        <a href="{% url 'signup' %}" class="button">Get Started</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 TalkHUb. All Rights Reserved.</p>
+    </div>
+
+    <script src="{% static 'accounts/js/script.js' %}"></script>
 </body>
 </html>
